@@ -10,14 +10,14 @@ var router = express.Router();
 const wikiRouter = require('./wiki');
 const userRouter = require('./user');
 
-console.log("Thisis the wikiRouter: ", wikiRouter);
+console.log("This is the wikiRouter: ", wikiRouter);
 
 router.use('/wiki', wikiRouter);
 
-module.exports = {
-    wikiRouter: wikiRouter,
-    userRouter: userRouter
-}
+// module.exports = {
+//     wikiRouter: wikiRouter,
+//     userRouter: userRouter
+// }
 
-
+module.exports = router
 
