@@ -5,11 +5,12 @@ let app = express();
 const volleyball = require('volleyball')
 const bodyParser = require('body-parser')
 const nunjucks = require('nunjucks')
-//const Sequelize = require('sequelize')
+// const Sequelize = require('sequelize')
 const fs = require('fs')
 const socketio = require('socket.io')
 const path = require('path')
-// require models index.js
+
+// require models and routes index.js
 const models = require('./models')
 const routes = require('./routes')
 
@@ -25,10 +26,6 @@ app.use(volleyball);
 // body parsing middleware
 app.use(bodyParser.urlencoded({ extended: true })); // for HTML form submits
 app.use(bodyParser.json()); // would be for AJAX requests
-
-
-
-
 
 // Routing to index.html
 app.get('/', (req,res,next) => {
@@ -46,9 +43,6 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/', routes)
 
 
-
-
-
 // sync: access pages via users
 var server;
 models.db.sync({force: true}) // drops and re-creates table
@@ -58,19 +52,3 @@ models.db.sync({force: true}) // drops and re-creates table
     })
 })
 .catch(console.error);
-
-// // start the server
-// var server = app.listen(1337, function(){
-//   console.log('listening on port 1337');
-// });
-
-
-// Re-routes to public version of data
-
-
-// modular routing that uses io inside it
-// app.use('/', makesRouter(io));
-
-
-
-
